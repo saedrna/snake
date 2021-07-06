@@ -1,7 +1,19 @@
 from lib.config import cfg, args
 import numpy as np
 import os
+from six.moves import urllib
 
+proxy = urllib.request.ProxyHandler({'http': 'http://127.0.0.1:10809'})
+# construct a new opener using your proxy settings
+opener = urllib.request.build_opener(proxy)
+# install the openen on the module-level
+urllib.request.install_opener(opener)
+
+proxy = urllib.request.ProxyHandler({'https': 'http://127.0.0.1:10809'})
+# construct a new opener using your proxy settings
+opener = urllib.request.build_opener(proxy)
+# install the openen on the module-level
+urllib.request.install_opener(opener)
 
 def run_dataset():
     from lib.datasets import make_data_loader
